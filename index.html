@@ -1,5 +1,18 @@
-<html>
-	<body>
-	<center><h1>Zhou Caiqin's Github Home</h1></center>
-	</body>
-</html>
+---
+layout: default
+title: Zhou Caiqin
+---
+
+<div id="home">
+  <h1>Blog Posts</h1>
+  <ul class="posts">
+    {% for post in site.posts %}
+      <li><span>{{ post.date | date_to_string }}</span> &raquo; <a href="{{ post.url }}">{{ post.title }}</a></li>
+    {% endfor %}
+  </ul>
+
+  <h1>My Open Source Projects</h1>
+  <ul class="posts">
+    <li><a href="http://github.com/caiqinzhou/HadoopKit/">HadoopKit:</a> all in one shell for setup hadoop cluster</li>
+  </ul>
+</div>
