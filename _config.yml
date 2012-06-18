@@ -1,2 +1,2 @@
-markdown: maruku
-pygments: fasle
+markdown: redcloth
+pygments: true
