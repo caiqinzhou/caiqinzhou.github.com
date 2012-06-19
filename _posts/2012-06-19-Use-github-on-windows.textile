@@ -1,0 +1,66 @@
+---
+layout: post
+title: 在Windows上搭建GitHub工作环境
+category: blog
+---
+
+h2. 安装cygwin
+
+http://cygwin.org
+安装时候安装一些常用软件：
+patch
+vim
+
+h2. 安装Python, Ruby
+
+* "Python2.7.3":http://python.org
+* "RailsInstaller":http://railsinstaller.org/
+
+h2. 配置Python
+
+添加环境变量：
+
+{% highlight bash linenos %}
+PYTHON_HOME=C:\Python27
+PATH=%PATH%;%PYTHON_HOME\Scripts
+{% endhighlight %}
+
+h2. 安装Pygments
+
+{% highlight bash linenos %}
+$ wget -nc peak.telecommunity.com/dist/ez_setup.py
+$ ./ez_setup.py
+# Pygments
+$ easy_install Pygments
+{% endhighlight %}
+
+h2. 安装RedCloth, Jekyll
+
+{% highlight bash linenos %}
+gem install RedCloth
+gem install jekyll
+{% endhighlight %}
+
+h2. 常见问题
+* Liquid error: No such file or directory – pygmentize
+找不到pygmentize，配置PATH变量
+
+* Liquid error: Bad file descriptor
+见 "Running Jekyll on Windows":http://www.madhur.co.in/blog/2011/09/01/runningjekyllwindows.html 
+下载补丁： "https://gist.github.com/1185645":https://gist.github.com/1185645
+定位到文件：/RailsInstaller/Ruby1.9.3/lib/ruby/gems/1.9.1/gems/albino-1.3.3/lib/albino.r
+
+{% highlight bash linenos %}
+patch albino.rb 0001-albino-windows-refactor.patch
+{% endhighlight %}
+
+
+<br>
+<br>
+
+h2. 参考文档：
+
+* "Jekyll 本地调试之若干问题":http://chxt6896.github.com/blog/2012/02/13/blog-jekyll-native.html
+* "Jekyll in Windows 终极奥义":http://chxt6896.github.com/blog/2012/03/15/jekyll-in-windows.html
+* "浩宇啸天 MISS 武昌鱼":http://chxt6896.github.com/category/blog/blog.html
+* "Running Jekyll on Windows":http://www.madhur.co.in/blog/2011/09/01/runningjekyllwindows.html
