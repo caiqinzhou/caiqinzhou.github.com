@@ -1,0 +1,16 @@
+---
+layout: default_layout
+---
+<h2>{{ page.title }}</h2><br/>
+{{ page.date | date_to_string }}
+<hr>
+{{ content }}
+<br>
+<div>
+  {% if page.next %}
+    <a class="pull-right" href="{{ page.next.url }}" rel="bookmark"><button class="btn" type="button">{{ page.next.title | truncatewords:5 }}&nbsp;&raquo;</button></a>
+  {% endif %}
+  {% if page.previous %}
+  	<a class="pull-left" href="{{ page.previous.url }}" rel="bookmark"><button class="btn" type="button">&laquo;&nbsp;{{ page.previous.title | truncatewords:5 }}</button></a>
+  {% endif %}
+</div>			

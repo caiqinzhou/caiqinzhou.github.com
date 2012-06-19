@@ -1,0 +1,10 @@
+<h2>{{ page.name }}</h2>
+<hr>
+
+{% for post in site.categories[page.name] %}
+<ul class="nav nav-pills nav-stacked">
+		<li>
+			<h3><a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a><span class="pull-right">{{ post.date | date:"%Y-%m-%d" }}</span></h3>
+		</li>
+</ul>
+{% endfor %}

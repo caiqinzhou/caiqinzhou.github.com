@@ -1,7 +1,7 @@
 ---
-layout: post
+layout: post_layout
 title: 在Windows上搭建GitHub工作环境
-category: blog
+category: GitHub
 ---
 
 h2. 安装cygwin
