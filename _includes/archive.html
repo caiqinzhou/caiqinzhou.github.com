@@ -22,10 +22,10 @@
     {% endif %}
 		{% if month_changed %}
       <h2>{{ the_month }} {{ page.name }}</h2>
+      <hr>
     {% endif %}
-    <hr>
 		<li>
-			<h3><a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a><span class="pull-right">{{ post.date | date:"%Y-%m-%d" }}</span></h3>
+			<a href="{{ post.url }}" title="{{ post.title }}"><h3>{{ post.title }}<span class="pull-right">{{ post.date | date:"%Y-%m-%d" }}</span></h3></a>
 		</li>
 		{% assign previous_post = post %}
 	{% endif %}

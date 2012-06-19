@@ -1,0 +1,8 @@
+---
+layout: post_layout
+title: About Me
+category: Life
+---
+
+h2. 追逐~
+!/images/me.jpg!
