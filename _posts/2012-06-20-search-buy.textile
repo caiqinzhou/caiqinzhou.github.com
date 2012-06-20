@@ -1,0 +1,19 @@
+---
+layout: post_layout
+title: Search Buy(Bate)发布
+category: Tools
+---
+
+刚好有同事说到他的创意，实时搜索各大B2C电子商务网站的信息。闲来无事，实现了一个简单的聚合搜索页面：Search Buy(Bate)
+原理很简单。就是嵌个iframe，将查询词拼入各个网站的查询url中。点击不同的网站，则显示不同网站的搜索内容。
+
+web版的用bootstrap来做前段
+wap版的用jquery mobile来做前段
+
+|_.Type|_.Link|
+|Web版|"search.html":/search.html|
+|Wap版|"search_m.html":/search_m.html|
+
+<script type="text/javascript">
+$("table").addClass("table");
+</script>
