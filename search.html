@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="zh" lang="zh_cn">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Search Buy</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="">
+<meta name="author" content="Zhou Caiqin" />
+
+<!-- Le styles -->
+<link href="/css/bootstrap.css" rel="stylesheet">
+<link href="/css/syntax.css" rel="stylesheet">
+<style>
+body {
+	padding-top: 60px;
+	/* 60px to make the container go all the way to the bottom of the topbar */
+}
+</style>
+<link href="/css/bootstrap-responsive.css" rel="stylesheet">
+
+<!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+<!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+<!-- Le fav and touch icons -->
+<link rel="shortcut icon" href="ico/favicon.ico">
+<link rel="apple-touch-icon-precomposed" sizes="144x144"
+	href="ico/apple-touch-icon-144-precomposed.png">
+<link rel="apple-touch-icon-precomposed" sizes="114x114"
+	href="ico/apple-touch-icon-114-precomposed.png">
+<link rel="apple-touch-icon-precomposed" sizes="72x72"
+	href="ico/apple-touch-icon-72-precomposed.png">
+<link rel="apple-touch-icon-precomposed"
+	href="ico/apple-touch-icon-57-precomposed.png">
+</head>
+
+<body data-spy="scroll" data-target=".subnav" data-offset="50">
+	<div class="navbar navbar-fixed-top">
+		<div class="navbar-inner">
+			<div class="container">
+				<a class="btn btn-navbar" data-toggle="collapse"
+					data-target=".nav-collapse"> <span class="icon-bar"></span> <span
+					class="icon-bar"></span> <span class="icon-bar"></span>
+				</a> <a class="brand" href="#">Search Buy(Beta)</a>
+				<div class="nav-collapse">
+					<div id="inputdiv" class="navbar-search pull-left">
+        		<input id="keyword" name="keyword" type="text" class="search-query span2" placeholder="Keyword...">
+        	</div>
+        	<ul class="nav nav-pills">
+						<li><a id="jingdong" href="#">京东</a></li>
+						<li><a id="amazon" href="#">亚马逊</a></li>
+						<li><a id="dangdang" href="#">当当</a></li>
+					</ul>
+				</div>
+				<!--/.nav-collapse -->
+				<div class="pull-right">
+					<a href="/"><button class="btn btn-danger" type="submit"><i class="icon-home icon-white"></i>Home</button></a>
+				</div>
+			</div>
+		</div>
+	</div>
+	<iframe id="mainframe" src="" width="100%" frameborder="0" scrolling="auto" height="300">
+	</iframe>
+	<footer class="container">
+		<span>
+			Copyright © 2012
+			<span class="pull-right">
+			Email: caiqinzhou@gmail.com&nbsp;|&nbsp;GitHub Home: <a href="http://github.com/caiqinzhou/">github.com/caiqinzhou</a>
+			</span>
+		</span>
+	</footer>
+	
+	<!-- Le javascript
+    ================================================== -->
+  <!-- Placed at the end of the document so the pages load faster -->
+  <script src="/js/jquery.js"></script>
+	<script src="/js/bootstrap.js"></script>
+	<script type="text/javascript">
+		var _gaq = _gaq || [];
+	  _gaq.push(['_setAccount', 'UA-32741471-1']);
+	  _gaq.push(['_trackPageview']);
+	
+	  (function() {
+	    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+	    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+	    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+	  })();
+	</script>
+	<!-- Search Action -->
+	<script type="text/javascript">
+		$("#mainframe").height($(document).height()-90);
+		function searchBuy(searchUrl){
+			var keyword = encodeURIComponent($("#keyword").val());
+			if(keyword == null || keyword == ""){
+				$("#inputdiv").addClass("control-group");
+				$("#inputdiv").addClass("error");
+				return;
+			}
+			$("#inputdiv").removeClass("control-group");
+			$("#inputdiv").removeClass("error");
+			$("#mainframe").attr("src",searchUrl+keyword);
+		}
+		
+		$(document).ready(function(){
+			$("#jingdong").click(function(){searchBuy("http://search.360buy.com/Search?enc=utf-8&area=1&keyword=")});
+			$("#amazon").click(function(){searchBuy("http://www.amazon.cn/s/ref=nb_sb_noss_2?__mk_zh_CN=%E4%BA%9A%E9%A9%AC%E9%80%8A%E7%BD%91%E7%AB%99&url=search-alias%3Daps&x=0&y=0&field-keywords=")});
+			$("#dangdang").click(function(){searchBuy("http://searchb.dangdang.com/?key=")});
+			
+		});
+		
+		
+	</script>
+</body>
+</html>
