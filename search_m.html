@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>
+        </title>
+        <link rel="stylesheet" href="js/jquery.mobile-1.1.0.min.css" />
+      <script src="js/jquery.js"></script>
+			<script src="js/jquery.mobile-1.1.0.min.js"></script>
+			<style>
+            /* App custom styles */
+      </style>
+    </head>
+    <body>
+        <div data-role="page">
+
+<div id="searchbar" data-role="fieldcontain" data-theme="a">
+  <fieldset data-role="controlgroup" data-mini="true">
+    <label for="keyword"><b>Search Buy(Beta)</b>&nbsp;|&nbsp;<a href="http://caiqinzhou.github.com/">Home</a></label>
+    <input type="search" name="keyword" id="keyword" value="" size="10" placeholder="Keyword" />
+  </fieldset>
+    
+    <!-- <a href="#" id="search" data-role="button" data-theme="b" data-mini="true">Search</a> -->
+</div>
+<div data-role="header" id="header">		
+	<div data-role="navbar">
+		<ul id="searchbar">
+			<li><a id="jingdong" href="#" data-icon="star" class="ui-btn-active">京东</a></li>
+			<li><a id="amazon" href="#" data-icon="star">亚马逊</a></li>
+			<li><a id="dangdang" href="#" data-icon="star">当当</a></li>
+			<li><a id="research" href="#" data-icon="search">Search</a></li>
+		</ul>
+	</div><!-- /navbar -->
+</div><!-- /footer -->
+
+
+	<iframe id="mainframe" src="" width="100%" frameborder="0" scrolling="auto" height="10" marginwidth="0" marginheight="0"></iframe>
+
+
+
+
+</div><!-- /page -->
+        <script>
+        		
+        		function searchBuy(sid,searchUrl){
+        			$("#mainframe").height($(document).height()-60);
+        			$("a").removeClass("ui-btn-active");
+							$("#"+sid).addClass("ui-btn-active");
+							var keyword = encodeURIComponent($("#keyword").val());
+							$("#searchbar").hide();
+							$("#header").show();
+							$("#mainframe").attr("src",searchUrl+keyword);
+						}
+						function backSearch(){
+							$("#mainframe").height($(document).height()-100);
+							$("#header").hide();
+							$("#searchbar").show();
+						}
+						
+            $(document).ready(function(){
+            	$("#header").hide();
+            	$("#keyword").change(function(){
+            		searchBuy("jingdong", "http://m.360buy.com/ware/search.action?keyword=");
+            	});
+            	$("#search").click(function(){searchBuy("jingdong", "http://m.360buy.com/ware/search.action?keyword=")});
+            	$("#jingdong").click(function(){searchBuy("jingdong", "http://m.360buy.com/ware/search.action?keyword=")});
+							$("#amazon").click(function(){searchBuy("amazon", "http://www.amazon.cn/gp/aw/s/ref=is_box_?__mk_zh_CN=%E4%BA%9A%E9%A9%AC%E9%80%8A%E7%BD%91%E7%AB%99&x=0&y=0&k=")});
+							$("#dangdang").click(function(){searchBuy("dangdang", "http://m.dangdang.com/gw_search.php?so_gouwu=%E6%90%9C%E7%B4%A2&sid=a72139533cb300ac&key=")});
+							
+							$("#research").click(function(){backSearch();});
+            });
+        </script>
+    </body>
+</html>
