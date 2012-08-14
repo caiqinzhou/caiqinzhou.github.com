@@ -9,6 +9,8 @@ h3. 配置github
 {% highlight bash linenos %}
 git.cmd config --global user.name "caiqinzhou"
 git.cmd config --global user.email "your_email@youremail.com"
+git.cmd config user.name "caiqinzhou"
+git.cmd config user.email "differentemail@email.com"
 {% endhighlight %}
 
 
