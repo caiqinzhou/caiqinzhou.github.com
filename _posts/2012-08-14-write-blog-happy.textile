@@ -32,3 +32,11 @@ $ cp 2012-06-20-search-buy.textile 2012-08-14-write-blog-happy.textile
 
 编写完成之后运行jekyll.bat进行编译，编译完成后，刷新浏览器即可。
 
+h2. 提交修改到github
+
+{% highlight bash linenos %}
+git.cmd add 2012-08-14-write-blog-happy.textile
+git.cmd commit -a
+git.cmd push
+{% endhighlight %}
+
