@@ -1,0 +1,54 @@
+---
+layout: post_layout
+title: 迁移Jira+Confluence+Fisheye+Crowd
+category: Java
+---
+
+h3. 背景
+
+由于服务器更换迁移，因此组内用到的Atlassian软件也得跟着迁移。迁移过程没有完全按照官方文档所说的步骤来迁移。大部分操作是关闭服务后，进行冷备份。scp到新的服务器上。
+使用的Atlassian软件有：Jira+Confluence+Fisheye+Crowd
+迁移顺序为：
+# 迁移Crowd
+# 迁移Jira
+# 迁移Confluence
+# 迁移Fisheye
+# 配置Jira+Confluence+Fisheye直接的Application link
+
+
+h3. 迁移Crowd
+
+这个迁移主要参考官方文档：
+"Migrating Crowd Between Servers":https://confluence.atlassian.com/display/CROWD024/Migrating+Crowd+Between+Servers
+关键是在迁移之前配置*'Remote Addresses'*和配置*crowd.properties*与*crowd-init.properties*文件
+
+
+h3. 迁移Jira
+
+参考官方文档：
+"Migrating JIRA to Another Server":https://confluence.atlassian.com/display/JIRA050/Migrating+JIRA+to+Another+Server
+迁移过程并没有按官方所说的，重新装一遍jira，然后重新做一次修改。而是把原来的安装目录和JIRA_HOME目录压缩了一遍，放到新服务器上面。
+迁移步骤：
+# 打包安装目录和数据目录
+# 用mysqldump备份数据库数据
+# 新服务器上面配置JIRA_HOME（为了快速迁移，目录结构和旧服务器一致，如果因为磁盘挂载目录不一致原因，建议用link）
+# mysql建立一样的数据库和用户，恢复数据（原先数据库配置用的就是localhost，所以jira这一块不用改动）
+# 启动jira
+# 配置crowd认证，迁移完成之前，原crowd先不停，以免登录失败。
+注意：如果配置了crowd sso认证，需要修改crowd.properties文件指向新的crowd服务器
+# 进入管理员界面re-index一下
+
+h3. 迁移Confluence
+
+参考官方文档：
+"Migrating Confluence Between Servers":https://confluence.atlassian.com/display/CONF42/Migrating+Confluence+Between+Servers
+迁移过程没有碰到license过期的问题。
+迁移步骤：
+# 打包安装目录和数据目录
+# 用mysqldump备份数据库数据
+# mysql建立一样的数据库和用户，恢复数据
+# 启动confluence
+# 配置crowd认证，迁移完成之前，原crowd先不停，以免登录失败。
+注意：如果配置了crowd sso认证，需要修改crowd.properties文件指向新的crowd服务器
+# 进入管理员界面re-index一下
+

@@ -52,3 +52,57 @@ git.cmd commit -a
 git.cmd push
 {% endhighlight %}
 
+h3. Textile快速手册
+
+<pre>
+Quick block modifiers:
+Header: hn.
+Blockquote: bq.
+Footnote: fnn.
+Numeric list: #
+Bulleted list: *
+
+Quick phrase modifiers:
+_emphasis_
+*strong*
+??citation??
+-deleted text-
++inserted text+
+^superscript^
+~subscript~
+%span%
+
+To apply attributes:
+(class)
+(#id)
+{style}
+[language]
+
+To align blocks:
+< right
+> left
+= center
+<> justify
+
+To insert a table:
+|a|table|row|
+|a|table|row|
+
+To insert a link:
+"linktext":url
+
+To insert an image:
+!imageurl!
+
+To define an acronym:
+ABC(Always Be Closing)
+
+To reference a footnote:
+[n]
+</pre>
+
+h3. 参考文档
+
+# "TEXTILE手册":http://redcloth.org/hobix.com/textile/
+# "textile在线转换":http://textism.com/tools/textile/
+
