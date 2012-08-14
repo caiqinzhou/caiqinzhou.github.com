@@ -1,3 +1,4 @@
 markdown: redcloth
 pygments: true
 paginate: 8
+baseurl: http://github.80-ren.com
