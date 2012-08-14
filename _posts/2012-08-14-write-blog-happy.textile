@@ -1,0 +1,34 @@
+---
+layout: post_layout
+title: 快乐得在Github上写博客
+category: GitHub
+---
+
+
+h2. 使用jekyll编译博客
+
+详见: "在Windows上搭建GitHub工作环境":/GitHub/2012/06/19/Use-github-on-windows.html
+
+h2. 使用Tomcat或者jetty做本地调试应用服务器
+
+以Tomcat为例，让ROOT配置文件指向_site目录
+修改\conf\Catalina\localhost\ROOT.xml：
+
+{% highlight xml linenos %}
+<?xml version='1.0' encoding='utf-8'?>
+<Context docBase="D:\MyData\GitHub\caiqinzhou.github.com\_site" path="" reloadable="true"/>
+{% endhighlight %}
+
+可以在桌面设置快捷方式启动tomcat，访问：http://localhost:8080 查看博客内容
+
+h2. 写博客流程
+
+打开一个cmd或者cygwin，进入博客目录_post，copy一份旧博客为新的博客页，简化创建新博客的过程（windows新建的文件，编码格式不是linux的UTF-8，需要用dos2unix转换，比较麻烦）
+
+{% highlight bash linenos %}
+zhoucaiqin@ZHOUCAIQIN /cygdrive/d/MyData/GitHub/caiqinzhou.github.com/_posts
+$ cp 2012-06-20-search-buy.textile 2012-08-14-write-blog-happy.textile
+{% endhighlight %}
+
+编写完成之后运行jekyll.bat进行编译，编译完成后，刷新浏览器即可。
+
