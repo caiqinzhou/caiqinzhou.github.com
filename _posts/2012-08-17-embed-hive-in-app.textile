@@ -1,0 +1,60 @@
+---
+layout: post_layout
+title: 把Hive嵌入到应用中
+category: Hadoop
+---
+
+h3. 背景
+
+项目组在使用hive计算越来越频繁，但使用也仅限于开发人员。但实际上，最终产生的数据是提供给产品和业务，如果能直接把数据面向产品或者业务。让数据能够直面终端用户，一方面能够减轻组内压力，也让用户能够更方便的使用数据。
+
+但hive目前比较成熟的交互方式无非是cli和hwi。后者基本上没啥用。而cli却要求客户登录客户端，一方面是易用性差，另一方面业务人员学习成本也高些。再考虑其他权限控制，查询监控等等~ cli表示压力很大。
+  
+因此有打算做一个外围应用，封装下hive。让hive变的更好用。其实已经有相应的产品了。如hue，国内的phpHiveAdmin，淘宝的数据平台（木有开源啊。。）。hue做的比较炫。但和hadoop耦合比较严重，也缺乏一些权限控制和监控。phpHiveAdmin感觉做的还是比较粗糙。俺php不熟悉，再改造的难度比较大。。。
+  
+我希望打造一个hive的外围应用应该类似于oracle的EM。集hive管理和查询于一身，让hive的诸多功能暴露出来，使用更方便，快捷。然后用户操作傻瓜化。。。等等。
+
+但首先咱得先坐下调研，看看hive能否嵌入到自己的应用中。
+
+h3. 准备
+
+最好在linux下开发。。。否则配置hadoop，hive会有各种纠结。
+# 开发工具：jdk6+eclipse+tomcat
+# 安装hadoop和hive：此处省略N多字
+  
+h3. 试水
+
+# 新建Web项目HiveEXP
+# 新建User Libary: *HIVE71_LIB* (使用hive 0.7.1版本)，加入HIVE_HOME/lib下的jar包
+# 新建User Libary: *HADOOP_LIB* ，加入HADOOP_HOME下的jar包和HADOOP_HOME/lib下的jar包
+# 把上两个User Libary加入到项目中
+# 项目中新建source folder：conf，把$HADOOP_HOME/conf和$HIVE_HOME/conf目录下的xml配置文件拷贝进来
+# 新建一个class测试：
+
+{% highlight java linenos %}
+package hive;
+
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Properties;
+import java.util.Set;
+
+import org.apache.hadoop.hive.cli.CliDriver;
+
+public class CliDriverTest {
+	public static void main(String[] args) throws Exception {
+		CliDriver.main(args);
+
+	}
+}
+{% endhighlight %}
+
+run之，要注意的是需要在Run Configuration里面加几个环境变量：
+* HADOOP_HOME=你的hadoop安装路径
+* HADOOP_CONF_DIR=${HADOOP_HOME}/conf
+* JAVA_LIBARY_PATH=${HADOOP_HOME}/lib/native/Linux-amd64-64
+* HIVE_CONF_DIR=${project_classpath}
+
+如果一切顺利，console上就会出现熟悉的 *{color:red}hive>* 
+
