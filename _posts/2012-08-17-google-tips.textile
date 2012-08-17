@@ -1,0 +1,12 @@
+---
+layout: post_layout
+title: Google工具使用技巧
+category: Tools
+---
+
+h3. Gmail搜索技巧
+
+* "英文版":https://support.google.com/mail/bin/answer.py?hl=en&answer=7190
+* "中文版":http://support.google.com/mail/bin/answer.py?hl=zh-Hans&answer=7190
+
+貌似中文版缺少一些说明，可能翻译不及时造成的。
