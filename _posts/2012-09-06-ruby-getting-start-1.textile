@@ -1,0 +1,69 @@
+---
+layout: post_layout
+title: Ruby入门(1)--安装配置
+category: Ruby
+---
+
+h3. 安装
+
+安装Ruby：
+
+{% highlight bash %}
+wget http://ftp.ruby-lang.org/pub/ruby/1.9/ruby-1.9.3-p194.tar.gz
+tar -xf ruby-1.9.3-p194.tar.gz
+cd ruby-1.9.3-p194
+./configure
+make
+make install
+irb
+{% endhighlight %}
+
+安装RubyGems：
+
+{% highlight bash %}
+wget http://production.cf.rubygems.org/rubygems/rubygems-1.8.24.tgz
+tar -xf rubygems-1.8.24.tgz
+cd rubygems-1.8.24
+ruby setup.rb
+gem update --system
+{% endhighlight %}
+
+安装Rails：
+
+{% highlight bash %}
+gem install rails execjs therubyracer
+rails new ~/helloworld
+cd ~/helloworld
+rails server
+{% endhighlight %}
+
+h3. 安装过程遇到的问题
+
+gem命令报错：It seems your ruby installation is missing psych (for YAML output)
+解决办法：
+安装libyaml
+
+{% highlight bash %}
+wget http://pyyaml.org/download/libyaml/yaml-0.1.4.tar.gz
+tar -xf http://pyyaml.org/download/libyaml/yaml-0.1.4.tar.gz
+cd yaml-0.1.4
+./configure
+make
+make install
+{% endhighlight %}
+
+启动rails server报错：
+
+{% highlight bash %}
+[Rails] `autodetect': Could not find a JavaScript runtime. See https://github.com/sstephenson/execjs for a list of available runtimes
+{% endhighlight %}
+
+解决办法：安装execjs和therubyracer，添加以下内容到Gemfile：
+
+{% highlight bash %}
+gem 'therubyracer'
+# execjs这个貌似不用可以启动rails server
+gem 'execjs'
+{% endhighlight %}
+
+
