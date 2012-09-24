@@ -45,7 +45,7 @@ gem命令报错：It seems your ruby installation is missing psych (for YAML out
 
 {% highlight bash %}
 wget http://pyyaml.org/download/libyaml/yaml-0.1.4.tar.gz
-tar -xf http://pyyaml.org/download/libyaml/yaml-0.1.4.tar.gz
+tar -xf yaml-0.1.4.tar.gz
 cd yaml-0.1.4
 ./configure
 make

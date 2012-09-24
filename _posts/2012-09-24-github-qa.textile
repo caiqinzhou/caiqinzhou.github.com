@@ -1,0 +1,37 @@
+---
+layout: post_layout
+title: GitHub常见问题解决办法
+category: GitHub
+---
+
+h2. 快速安装git环境
+
+详见： "https://github.com/caiqinzhou/mytools/tree/master/git":https://github.com/caiqinzhou/mytools/tree/master/git
+
+{% highlight bash %}
+wget https://github.com/git/git/tarball/v1.7.12 --no-check-certificate
+tar -xf v1.7.12
+cd git-*
+make configure
+./configure
+make
+make install
+{% endhighlight %}
+
+h2. clone失败certificate verify failed
+
+* 错误：
+
+{% highlight bash %}
+正克隆到 'mytools'...
+error: SSL certificate problem, verify that the CA cert is OK. Details:
+error:14090086:SSL routines:SSL3_GET_SERVER_CERTIFICATE:certificate verify failed while accessing https://github.com/caiqinzhou/mytools.git/info/refs
+fatal: HTTP request failed
+{% endhighlight %}
+
+* 解决办法：
+
+{% highlight bash %}
+git config --global http.sslVerify false
+{% endhighlight %}
+
