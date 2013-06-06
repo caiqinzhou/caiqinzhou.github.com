@@ -1,0 +1,42 @@
+---
+layout: post_layout
+title: TF-IDF
+category: Machine Learning
+---
+
+h3. TF-IDF简介
+
+TF-IDF是一种统计方法，用以评估一字词对于一个文件集或一个语料库中的其中一份文件的重要程度。字词的重要性随着它在文件中出现的次数成正比增加，但同时会随着它在语料库中出现的频率成反比下降。
+
+wikipedia: "http://zh.wikipedia.org/wiki/TF-IDF":http://zh.wikipedia.org/wiki/TF-IDF
+
+
+
+{% highlight bash %}
+#创建新项目
+rails new helloworld
+#启动服务器
+rails server
+{% endhighlight %}
+
+* 错误：
+{% highlight bash %}
+/usr/local/lib/ruby/gems/1.9.1/gems/execjs-1.4.0/lib/execjs/runtimes.rb:51:in `autodetect': Could not find a JavaScript runtime. See https://github.com/sstephenson/execjs for a list of available runtimes. (ExecJS::RuntimeUnavailable)
+{% endhighlight %}
+
+* 解决办法：
+修改Gemfile，添加
+
+{% highlight bash %}
+gem 'execjs'
+gem 'therubyracer'
+{% endhighlight %}
+
+rails generate model story
+
+      invoke  active_record
+      create    db/migrate/20120924090629_create_stories.rb
+      create    app/models/story.rb
+      invoke    test_unit
+      create      test/unit/story_test.rb
+      create      test/fixtures/stories.yml
